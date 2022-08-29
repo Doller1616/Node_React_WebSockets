@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+.card-view { 
+    display: flex;
+    gap: 10px;
+    .img-sec { 
+        border-radius: 20px;
+    }
+
+}

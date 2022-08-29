@@ -13,7 +13,7 @@ import { OneComponent } from './one.component';
   declarations: [
     AppComponent,
     OneComponent,
-    //TwoComponent
+    
   ],
   imports: [
     BrowserModule,

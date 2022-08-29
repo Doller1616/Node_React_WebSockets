@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { LazyMoRoutingModule } from './lazy-mo-routing.module';
 import { TwoComponent } from './two.component';
+import { PokemonCardView } from '../common/pokemon-cardview'
 
 @NgModule({
   declarations: [
-    TwoComponent
+    TwoComponent,
+    PokemonCardView
   ],
   imports: [
     CommonModule,
