@@ -7,13 +7,13 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { OneComponent } from './one.component';
-//import { TwoComponent } from './two.component';
+import { ThreeComponent } from './three.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OneComponent,
-    
+    ThreeComponent
   ],
   imports: [
     BrowserModule,
