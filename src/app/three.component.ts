@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl, FormArray, NgForm } from '@angular/forms'
 
 //--------data collection -------------- 
 // input  ('checkbox', date, number, file, radio)
@@ -13,7 +14,7 @@ import { Component } from '@angular/core';
            margin: 20px 0 0 10px;
            display: flex;
            flex-wrap: wrap;
-           background-image: url('assets/CANDIDATE 4 -ANS 1_GOOD.png');
+           /* background-image: url('assets/CANDIDATE 4 -ANS 1_GOOD.png'); */
            justify-content: space-evenly; /* horizontal */
            align-items: center; /*vertical */
            height: 99vh;
@@ -61,7 +62,7 @@ import { Component } from '@angular/core';
        <div id="cont-ID" class="container">
       
         
-       <div class="my-check">
+       <!-- <div class="my-check">
         <input  type="text"  [(ngModel)]="inputVal" />
         <div>
           <span> <input  type="checkbox" /> </span>
@@ -71,37 +72,97 @@ import { Component } from '@angular/core';
        
        <div>
         <p>
-       <!-- <input  type="file" (change)="uploadFile($event)" multiple /></p> -->
+        <input  type="file" (change)="uploadFile($event)" multiple /></p>
        <input  type="date" /> 
-       </div>
-
+       </div> -->
+       <div>
+       <!-- Image -->
        <label class="button-sty">
        <input  type="file" (change)="uploadFile($event)" multiple />
-       <img *ngIf="userImg" src={{userImg}} width="100%" height="100%" />    
+       <!-- <img *ngIf="userImg" src={{userImg}} width="100%" height="100%" />     -->
        </label>
+       
+       <!-- ngNativeValidate (to add HTML  Validation) -->
+       <!-- <form (ngSubmit)="submitForm($event)" ngNativeValidate>
+           <input type="text" [(ngModel)]="data.username" name="username" required/> <br/>   
+           <input type="email" [(ngModel)]="data.email" name="email" required/> <br/>  
+           <input type="number" max="3" [(ngModel)]="data.phone" name="phone" required/> <br/>  
+           <input type="date" [(ngModel)]="data.dob" name="dob" required/> <br/>  
+           <input type="reset"  /> <br/>  
+           <input type="submit" value='submit'  [disabled]="isFormValid" />  
+        </form> -->
 
+
+          <form #demoForm="ngForm">
+           <input type="number" [(ngModel)]="data.username" name="username" 
+              #username="ngModel" max="2"  /> <br/>   
+
+            <span *ngIf="username.invalid && (username.dirty || username.touched)" 
+              style="color: red"> Invalid Filed </span> <br/>  
+
+           <input type="button" value="submit" [disabled]="!demoForm.valid" (click)="submitForm(demoForm.form)" />  
+
+          </form>
+
+
+
+    <form #userForm="ngForm" class="row g-3">
+
+    <label for="validationServer01" class="form-label">First name</label>
+    <input type="number" [(ngModel)]="data.username" name="one" min="3"
+          class="form-control is-valid is-invalid" #username='ngModel' 
+          [class.is-invalid]="username.valid" [class.is-valid]="!username.valid"   required>
+    <div class="valid-feedback">  Looks good!  </div>
+    
+    <input type="button" class="btn btn-primary" [disabled]="!userForm.valid"
+        value="submit" (click)="submitFormII(userForm)" />  
+        
+    </form>
+
+
+  </div>
+    
+        
        </div>
        
+        
        
     `
 })
 export class ThreeComponent {
 
     inputVal: any
-    userImg : any// = "https://upload.wikimedia.org/wikipedia/en/8/86/Avatar_Aang.png"
-    
+    userImg: any// = "https://upload.wikimedia.org/wikipedia/en/8/86/Avatar_Aang.png"
+
+    data = {
+        username: "",
+        email: "",
+        phone: "",
+        dob: "",
+    }
+
+    isFormValid: any = Object.values(this.data).every((v: any) => !!v);
+
     fire() {
         console.log(this.inputVal);
     }
 
-    uploadFile(e:any){
-    
+    uploadFile(e: any) {
+
         const reader = new FileReader();
         reader.readAsDataURL(e.target.files[0]);
         reader.onload = () => {
             console.log(reader.result)
-         this.userImg = reader.result
+            this.userImg = reader.result
         }
-        
+
+    }
+
+    submitForm(username: any) {
+        console.log("eeeeeeeeeeeeeeeeeeeeeeeeee", username)
+    }
+
+    submitFormII(username: any) {
+        console.log("eeeeeeeeeeeeeeeeeeeeeeeeee", username.control.controls)
     }
 }
