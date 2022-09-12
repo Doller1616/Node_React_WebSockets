@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-tools": {
+    "angular-navigation": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-tools",
+            "outputPath": "dist/angular-navigation",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,9 +28,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+           ],
+           "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+           ]
           },
           "configurations": {
             "production": {
@@ -69,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-tools:build:production"
+              "browserTarget": "angular-navigation:build:production"
             },
             "development": {
-              "browserTarget": "angular-tools:build:development"
+              "browserTarget": "angular-navigation:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-tools:build"
+            "browserTarget": "angular-navigation:build"
           }
         },
         "test": {
@@ -105,6 +109,6 @@
     }
   },
   "cli": {
-    "analytics": "ae01e390-8013-4732-bb3e-20764280edfd"
+    "analytics": "7a6ff18e-7cd2-4592-ab7d-a834db45857c"
   }
 }
