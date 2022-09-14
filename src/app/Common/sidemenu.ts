@@ -7,7 +7,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
      <style>
         .animate-menu {
             width : '50px';
-            transition: width 1s ease-in-out;
+            transition: width 1s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
     
     </style>
