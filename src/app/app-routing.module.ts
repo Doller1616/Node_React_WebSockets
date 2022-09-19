@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OneComponent} from './one.component';
-import { ThreeComponent } from './three.component';
+import { AuthGuard } from './common/auth.guard';
+import { WelcomeComponent } from './welcome.component';
 
 const routes: Routes = [
-  {path: "one", component: OneComponent},
-  {path: "comp", loadChildren: ()=> import('./signup_signin/lazy-mo.module').then((m)=>m.LazyMoModule)},
-  {path: "three", component: ThreeComponent}
-
+  { path: '', component: WelcomeComponent},
+  { path: 'auth', loadChildren:()=> import('./sign-in-up/sign-in-up.module').then((m)=>m.SignInUpModule) },
+  { path: 'dashboard',  canActivate :[AuthGuard],
+    loadChildren:()=> import('./dashboard/dashboard.module').then((m)=>m.DashboardModule) }
 ];
 
 @NgModule({
