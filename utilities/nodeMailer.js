@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer');
 const sgTransport = require('nodemailer-sendgrid-transport');
 var options = {
     auth: {
-        //take it from sendgrid (https://app.sendgrid.com) abhardwaj1@kloudrac.com
+        //take it from sendinblue (https://www.sendinblue.com) abhardwaj1@kloudrac.com
         api_key: 'SG.9Xo...'
     }
 }
